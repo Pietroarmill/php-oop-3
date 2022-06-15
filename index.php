@@ -6,14 +6,20 @@ require_once __DIR__ . "/CreditCard.php";
 require_once __DIR__ . "/Cuccia.php";
 
 
-$monge = new Cibo("Monge", "50", "cane", "20");
-$selex = new Cibo("Selex", "30", "gatto", "15");
+$monge = new Cibo("Monge", 50, "cane", "20");
+$selex = new Cibo("Selex", 30, "gatto", "15");
 $dogHome = new Cuccia("DogHome", 100, "cane", "medio");
 
+$dogHome->disponibile = false;
+
 $pietro = new Utente();
-$pietro->addProductToCart($monge);
-$pietro->addProductToCart($selex);
-$pietro->addProductToCart($dogHome);
+try {
+  $pietro->addProductToCart($monge);
+  $pietro->addProductToCart($selex);
+  $pietro->addProductToCart($dogHome);
+} catch (Exception $e) {
+  echo "Ops.. qualcosa è andato storto!";
+}
 
 $pietro->register("Pietro", "pietro@gmail.com");
 // $pietro_credit_card = new CreditCard(80708868606, "04/24", 393);

@@ -11,8 +11,10 @@ class Utente
 
   public function addProductToCart($_product)
   {
-    if ($_product->prezzo) {
+    if ($_product->prezzo && $_product->disponibile) {
       $this->carello[] = $_product;
+    } else {
+      throw new Exception("Non disponibile");
     }
   }
 

@@ -6,6 +6,7 @@ class Prodotto
   public $prezzo;
   public $animale;
   public $peso;
+  public $disponibile = true;
 
   function __construct($_nome, $_prezzo, $_animale, $_peso)
   {
