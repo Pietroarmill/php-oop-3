@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/Iva.php";
 
 class Utente
 {
@@ -8,6 +8,8 @@ class Utente
   public $mail;
   public $carello = [];
   public $metodoPagamento;
+
+  use Iva;
 
   public function addProductToCart($_product)
   {
@@ -27,7 +29,7 @@ class Utente
     if ($this->isRegister()) {
       $total_sum = $total_sum - ($total_sum / 100) * 20;
     }
-    return $total_sum;
+    return $total_sum + ($total_sum * $this->iva / 100);
   }
 
   public function register($_name, $_mail)
